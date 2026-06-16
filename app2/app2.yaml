@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: production-env
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-rs
+  namespace: production-env
+  labels:
+    component: api
+    environment: dev
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: data-worker
+      component: api
+      environment: dev
+  template:
+    metadata:
+      labels:
+        app: data-worker
+        component: api
+        environment: dev
+    spec:
+      containers:
+        - name: data-worker
+          image: stefanscherer/whoami
+          ports:
+            - containerPort: 8080

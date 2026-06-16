@@ -3,19 +3,19 @@ kind: Application
 metadata:
   creationTimestamp: "2026-06-16T13:22:03Z"
   generation: 46
-  name: app1
+  name: app
   namespace: argocd
   resourceVersion: "23275"
   uid: 3bcb305d-5579-43cc-b599-2801c4c2fa06
 spec:
   destination:
-    namespace: app1-argocd
+    namespace: app-argocd
     server: https://kubernetes.default.svc
   project: default
   source:
     directory:
       recurse: true
-    path: app1
+    path: yaml
     repoURL: https://github.com/mxmchr/argocd.git
     targetRevision: main
   syncPolicy:
